@@ -196,7 +196,7 @@ public class KdTree {
         closestDistance = root.p.distanceSquaredTo(p);
         nearestrecursive(root, p);
 
-        result = nearest;
+        Point2D result = nearest; // Create an array to store the nearest point
         return result;
     }
 
@@ -269,7 +269,7 @@ public class KdTree {
         }
         for (int i = 0; i < nrOfRecangles; i++) {
             // Query on rectangle i, sort the result, and print
-            Iterable<Point2D> ptset = set.range(rectangles[i]);
+            Iterable<Point2D> ptset = Arrays.asList(set.range(rectangles[i]));
             int ptcount = 0;
             for (Point2D p : ptset)
                 ptcount++;
