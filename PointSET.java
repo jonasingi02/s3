@@ -40,7 +40,7 @@ public class PointSET {
     // add the point p to the set (if it is not already in the set)
     public void insert(Point2D p) {
         if(p == null){
-            throw new IlligalArgumentExpression();
+            throw new IllegalArgumentException();
         }
         BST.add(p);
     }
