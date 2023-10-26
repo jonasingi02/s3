@@ -63,27 +63,26 @@ public class PointSET {
 
     // all points in the set that are inside the rectangle
     public Iterable<Point2D> range(RectHV rect) {
-        public Iterable<Point2D> range(RectHV rect) {
-            if (rect == null) {
-                throw new IllegalArgumentException();
-            }
-        
-            for (Point2D point : BST) {
-                if (rect.contains(point)) {
-                    count++;
-                }
-            }
-        
-            Point2D[] pointsInRect = new Point2D[count];
-
-            for (Point2D point : BST) {
-                if (rect.contains(point)) {
-                    pointsInRect[count] = point;
-                }
-            }
-        
-            return Arrays.asList(result);
+        if (rect == null) {
+            throw new IllegalArgumentException();
         }
+        int count = 0;
+        
+        for (Point2D point : BST) {
+            if (rect.contains(point)) {
+                count++;
+            }
+        }
+    
+        Point2D[] pointsInRange = new Point2D[count];
+
+        for (Point2D point : BST) {
+            if (rect.contains(point)) {
+                pointsInRange[count] = point;
+            }
+        }
+    
+        return Arrays.asList(pointsInRange);
     }
 
     // a nearest neighbor in the set to p; null if set is empty
@@ -109,6 +108,7 @@ public class PointSET {
     }
 
     public static void main(String[] args) {
+
     }
 
 }

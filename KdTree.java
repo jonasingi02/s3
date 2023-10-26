@@ -196,7 +196,7 @@ public class KdTree {
         closestDistance = root.p.distanceSquaredTo(p);
         nearestrecursive(root, p);
 
-        result = {nearest}; // Create an array to store the nearest point
+        result = nearest;
         return result;
     }
 
