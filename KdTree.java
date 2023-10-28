@@ -8,6 +8,7 @@ import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.RectHV;
+import edu.princeton.cs.algs4.StdDraw;
 
 public class KdTree {
     private static class Node {
@@ -134,7 +135,49 @@ public class KdTree {
 
     // draw all of the points to standard draw
     public void draw() {
+        _draw_(root, null);
+    }
 
+    private void _draw_(Node node, Node parent) {
+        if (!(node.lb == null)) {
+            _draw_(node.lb, node);
+        }
+
+        StdDraw.setPenColor(StdDraw.BLACK);
+        StdDraw.setPenRadius(0.01);
+        StdDraw.point(node.p.x(), node.p.y());
+        if (parent == null) {
+            StdDraw.setPenColor(StdDraw.RED);
+            StdDraw.setPenRadius();
+            StdDraw.line(node.p.x(), 0, node.p.x(), 1);
+        } 
+        else {
+            if (node.vertical) {
+                if (node.equals(parent.lb)) {
+                    StdDraw.setPenColor(StdDraw.RED);
+                    StdDraw.setPenRadius();
+                    StdDraw.line(node.p.x(), parent.rect.ymin(), node.p.x(), parent.p.y());
+                } else {
+                    StdDraw.setPenColor(StdDraw.RED);
+                    StdDraw.setPenRadius();
+                    StdDraw.line(node.p.x(), parent.p.y(), node.p.x(), parent.rect.ymax());
+                }
+
+            } else {
+                if (node.equals(parent.lb)) {
+                    StdDraw.setPenColor(StdDraw.BLUE);
+                    StdDraw.setPenRadius();
+                    StdDraw.line(parent.rect.xmin(), node.p.y(), parent.p.x(), node.p.y());
+                } else {
+                    StdDraw.setPenColor(StdDraw.BLUE);
+                    StdDraw.setPenRadius();
+                    StdDraw.line(parent.p.x(), node.p.y(), parent.rect.xmax(), node.p.y());
+                }
+            }
+        }
+        if (!(node.rt == null)) {
+            _draw_(node.rt, node);
+        }
     }
 
     // all points in the set that are inside the rectangle
@@ -148,7 +191,6 @@ public class KdTree {
 
         rangerecursive(root, rect, result, count);
 
-        // Trim the result array to remove null elements
         return Arrays.copyOf(result, count);
     }
 
@@ -196,7 +238,7 @@ public class KdTree {
         closestDistance = root.p.distanceSquaredTo(p);
         nearestrecursive(root, p);
 
-        Point2D result = nearest; // Create an array to store the nearest point
+        Point2D result = nearest; 
         return result;
     }
 
@@ -268,7 +310,6 @@ public class KdTree {
             set.insert(new Point2D(x, y));
         }
         for (int i = 0; i < nrOfRecangles; i++) {
-            // Query on rectangle i, sort the result, and print
             Iterable<Point2D> ptset = Arrays.asList(set.range(rectangles[i]));
             int ptcount = 0;
             for (Point2D p : ptset)
