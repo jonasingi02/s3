@@ -191,6 +191,7 @@ public class KdTree {
 
         rangerecursive(root, rect, result, count);
 
+
         return Arrays.copyOf(result, count);
     }
 
@@ -238,7 +239,7 @@ public class KdTree {
         closestDistance = root.p.distanceSquaredTo(p);
         nearestrecursive(root, p);
 
-        Point2D result = nearest; 
+        Point2D result = nearest;
         return result;
     }
 

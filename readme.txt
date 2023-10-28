@@ -6,24 +6,29 @@
 Name 1: Dagur Kári Ólafsson    
 kt 1: 311003-2750
 
-Name 2:    
-kt 2:   
+Name 2: Jónas Ingi Þórisson
+kt 2: 120202-2940
 
 /**********************************************************************
  *  Briefly describe the Node data type you used to implement the
  *  2d-tree data structure.
  **********************************************************************/
-
+    we used a data type that has the point using point2D, a boolean wether
+    it is a vertical point. both its children and a rectangle which includes
+    all the points its children could end up in.
 /**********************************************************************
  *  Describe your method for range search in a kd-tree.
  **********************************************************************/
-
+    we recursively go through all relevant subtrees (where the point 
+    rectangle intersects the range rectangle) to find all points that 
+    are in that specific range.
 
 /**********************************************************************
  *  Describe your method for nearest neighbor search in a kd-tree.
  **********************************************************************/
-
-
+    first finds the leaf node where that nodes rectangle has the point inside
+    then only checks other subtrees if the distance from that nodes rectangle 
+    is closer to the point than the current closest distance. 
 
 /**********************************************************************
  *  Give the total memory usage in bytes (using tilde notation and 
@@ -37,9 +42,9 @@ kt 2:
 
 bytes per Point2D: 32 bytes
 
-bytes per RectHV:
+bytes per RectHV: 64 bytes 
 
-bytes per KdTree of N points (using tilde notation):   ~
+bytes per KdTree of N points (using tilde notation):   ~ 291 N bytes (97 per node times 3 nodes)
 [include the memory for any referenced Node, Point2D and RectHV objects]
 
 
