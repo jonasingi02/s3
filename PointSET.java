@@ -75,10 +75,12 @@ public class PointSET {
         }
     
         Point2D[] pointsInRange = new Point2D[count];
-
+        int count2 = 0;
         for (Point2D point : BST) {
+            
             if (rect.contains(point)) {
-                pointsInRange[count] = point;
+                pointsInRange[count2] = point;
+                count2++;
             }
         }
     

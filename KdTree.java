@@ -143,22 +143,22 @@ public class KdTree {
             throw new IllegalArgumentException();
         }
 
-        Point2D[] result = new Point2D[size]; // Create an array to store matching points
-        int[] count = {0}; // An array to keep track of the count of matching points
+        Point2D[] result = new Point2D[size];
+        int count = 0;
 
         rangerecursive(root, rect, result, count);
 
         // Trim the result array to remove null elements
-        return Arrays.copyOf(result, count[0]);
+        return Arrays.copyOf(result, count);
     }
 
-    private void rangerecursive(Node node, RectHV rect, Point2D[] result, int[] count) {
+    private void rangerecursive(Node node, RectHV rect, Point2D[] result, int count) {
         if (node == null) {
             return;
         }
 
         if (rect.contains(node.p)) {
-            result[count[0]++] = node.p; // Add the point to the result array
+            result[count++] = node.p;
         }
 
         if (node.vertical) {
