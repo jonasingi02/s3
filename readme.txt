@@ -50,7 +50,15 @@ bytes per KdTree of N points (using tilde notation):   ~
  *  and the timing results. (Do not count the time to generate the N 
  *  points or to read them in from standard input.)
  **********************************************************************/
-
+The expcected running time can be calculated by knowing the time complexity which is O(NlogN)
+N      |  Time_empirical  
+10          0.001                        
+100         0.001                
+1000        0.001                
+10000       0.005                
+100000      0.044              
+1000000     0.875              
+As we can see from the table the running time is growing at NlogN rate.
 
 
 /**********************************************************************
