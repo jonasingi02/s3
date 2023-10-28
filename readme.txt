@@ -55,7 +55,7 @@ bytes per KdTree of N points (using tilde notation):   ~ 291 N bytes (97 per nod
  *  and the timing results. (Do not count the time to generate the N 
  *  points or to read them in from standard input.)
  **********************************************************************/
-The expcected running time can be calculated by knowing the time complexity which is O(NlogN)
+The expcected running time can be calculated by knowing the time complexity which is ~(NlogN)
 N      |  Time_empirical  
 10          0.001                        
 100         0.001                
