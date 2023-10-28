@@ -78,12 +78,12 @@ As we can see from the table the running time is growing at NlogN rate.
  **********************************************************************/
 
                      calls to nearest() per second
-                     brute force           2d-tree
+                     brute force            2d-tree
+input100K.txt        16.666.667             76.923.077
 
-input100K.txt
-
-input1M.txt
-
+input1M.txt          50.000.000             1.000.000.000
+I determined th eoperations per second by taking the time to calculate the input
+and divided the number of points by the elapsed time to get the operations per second.
 
 
 /**********************************************************************
